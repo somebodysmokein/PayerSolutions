@@ -1,0 +1,29 @@
+ <nav>
+<div class="row grey darken-4">
+  <div class="nav-wrapper">
+    <div class="col s2">      
+     	 <a href="#" class="brand-logo"><img alt="" src="images/Logo-edited-3.png" ></a>
+    </div> 
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <div class="col offset-s4 s4">
+        <li><a ng-hide="currentUser" ng-href="#/login">Login</a></li>
+   	 	<li><a ng-hide="currentUser" ng-href="#/register">Register</a></li>
+   	  </div>	
+   	  <div class="col offset-s6 s4">
+   	 		<div class="userinfo" ng-show="currentUser" ng-controller="RegistrationController">
+    			<li><span class="userinfo">Hi {{currentUser.firstname}}</span></li>
+    			<li> <a ng-href="#/login" ng-click="logout()">Logout</a></li>
+    			<!-- <li> <a ng-href="#/panel">Panel</a></li>
+    			<li> <a ng-href="#/accord">Accordion</a></li> -->
+    		</div>
+    	</div>	
+      </ul>
+    </div> 
+  	
+</div>
+</div>
+</nav>
+  
+  
+  

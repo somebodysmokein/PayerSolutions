@@ -1,0 +1,74 @@
+<html>
+   <head>
+      <title>The Materialize Collapsible Example</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1">      
+	  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+	   <script src="js/lib/angular/angular.min.js"></script>
+  <script src="js/lib/angular/angular-route.min.js"></script>
+  <script src="js/lib/angular/angular-animate.min.js"></script>
+  <script src="js/lib/jquery/jquery.js"></script>
+                 
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+      <style>
+      /* 	nav {
+    color: #fff;
+    background-color: #212121;
+    width: 100%;
+    height: 102px;
+    line-height: 56px;
+		} */
+      </style>
+   </head>
+   <body class="container"> 
+   
+  <nav>
+<div class="row grey darken-4">
+  <div class="nav-wrapper">
+    <div class="col s2">      
+     	 <a href="#" class="brand-logo"><img alt="" src="images/Logo-edited-3.png" ></a>
+    </div> 
+      
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <div class="col offset-s4 s4">
+        <li><a  ng-href="#/login">Add Provider</a></li>
+   	 	<li><a  ng-href="#/register">Remove Provider</a></li>
+   	  </div>		
+      </ul>
+    </div> 
+  	
+</div>
+</div>
+</nav>
+      
+      <h4>Popout Accordion</h4>
+      <ul class="collapsible popout" data-collapsible="accordion">
+         <li>
+            <div class="collapsible-header"><i class="material-icons">filter_drama</i>First Section</div>
+            <div class="collapsible-body">
+            <p>
+					<div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+			</p></div>
+         </li>
+         <li>
+            <div class="collapsible-header"><i class="material-icons">place</i>Second Section</div>
+            <div class="collapsible-body"><p>This is second section.</p></div>
+         </li>
+         <li>
+            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third Section</div>
+            <div class="collapsible-body"><p>This is third section.</p></div>
+         </li>
+      </ul>
+     
+     
+   </body>  
+</html>

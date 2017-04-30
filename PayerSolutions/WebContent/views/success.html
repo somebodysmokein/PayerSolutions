@@ -1,0 +1,216 @@
+<div class="row">
+     <div class="col offset-s2 s2 offset-m2 m2 offset-l2 l2">
+      <div class="card yellow lighten-4 hoverable" ng-click="initaddProvider()">
+        <div class="card-image">
+          <a ng-click="addProvider()" href="#/addprovider"><img src="images/AddProvider-2.png"></a>
+          <span class="card-title"></span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content" ng-click="addProvider">
+          <p><h6>Add Provider</h6></p>
+        </div>
+      </div>
+    </div>
+     <div class="col offset-s4 s2 offset-m2 m2 offset-l2 l2">
+      <div class="card yellow lighten-4 hoverable" ng-click="initviewProvider()">
+        <div class="card-image">
+          <a ng-click="viewProvider()" href="#/viewprovider"><img src="images/ViewProvider-1.png"></a>
+          <span class="card-title"></span>
+          <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
+        </div>
+        <div class="card-content" ng-click="viewProvider()">
+          <p><h6>View Provider</h6></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+        
+ 
+<!-- <div class="card meetings cf" ng-show="addprov"> -->
+<div class="row" style="width:100%;height:100%">
+<div class="col offset-s2 s12 offset-m2 m10 offset-l2 l10" style="width:100%;height:100%">    
+<div class="card center form-wrapper" ng-show="addprov" style="width:100%;height:100%">
+  <div class="textintro" style="width:100%;height:100%">
+    <h4>Add Provider Form</h4>
+    <center><p>{{ message }}</p></center>
+    <div class="row" style="width:100%;height:100%">
+ 
+    <form class="col s12 m8 l8" style="width:100%;height:100%">
+      <div class="row" style="width:100%;height:100%">
+        <div class="input-field col s6">
+          <input id="first_name" type="text" class="validate" ng-model="params.first_name">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="right input-field col s6">
+          <input id="last_name" type="text" class="validate" ng-model="params.last_name">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+       <div class="row">
+       <div class="input-field col s6">
+      	<input id="mi" type="text" class="validate" ng-model="params.mi">
+         <label for="mi">Middle Initial</label>
+      </div>
+      <div class="input-field col s2">
+      	<label>Action Taken</label>
+      </div>
+ 	<div class="input-field col  s6">	 
+      <input name="actkn" type="radio" id="actkn1" ng-model="params.actkn" value="Yes"/>
+      <label for="actkn1">Yes</label>
+      <input name="actkn" type="radio" id="actkn2" ng-model="params.actkn" value="No"/>
+      <label for="actkn2">No</label>
+	</div>
+	<!--  <div>currently selected: {{params.actkn}}</div> -->
+      </div>
+      
+      <div class="row">
+ 	<div class="input-field col pull-s1 s6">	 
+      <input name="status" type="radio" id="status1" ng-model="params.status" value="Active"/>
+      <label for="status1">Active</label>
+      <input name="status" type="radio" id="status2" ng-model="params.status" value="Expired"/>
+      <label for="status2">Expired</label>
+	</div>
+	<!-- <div>currently selected: {{params.status}}</div> -->
+	 <div class="input-field col s6">
+      	<input id="year" type="text" class="validate" ng-model="params.year">
+         <label for="year">Birth Year</label>
+      </div>
+      	 <div class="row">
+ 		<div class="input-field col s6">
+ 			<input id="credno" type="text" class="validate" ng-model="params.credno">
+         	<label for="credno">Credential Number</label>
+ 		</div>
+ 		<div class="input-field col s6">	
+ 			<input id="credty" type="text" class="validate" ng-model="params.credty">
+         	<label for="credty">Credential Type</label>
+ 		</div>
+ 		</div>    
+ 		
+ 		 <div class="row">
+ 		 <div class="input-field col s2">
+ 			<label> CE Due Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="cedt" type="date" class="datepicker" ng-model="params.cedt">
+			         	
+ 		</div>
+ 		
+ 		
+ 		<div class="input-field col s2">
+ 			<label>Expiration Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="expdt" type="date" class="datepicker" ng-model="params.expdt">
+ 		</div>
+ 		</div>    
+ 		<div class="row">
+ 		 <div class="input-field col s2">
+ 			<label> First Issue Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="firstdt" type="date" class="datepicker" ng-model="params.firstdt">
+			         	
+ 		</div>
+ 		
+ 		<div class="input-field col s2">
+ 			<label>Last Issue  Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="lstdt" type="date" class="datepicker" ng-model="params.lstdt">
+ 		</div>
+ 		</div>    
+ 		 
+ 		 
+ 		 <div class="row">
+        <div class="input-field col s6">
+          <button ng-click="addProvider()" class="btn waves-effect waves-light"  name="submit">Submit
+    		<i class="material-icons right">send</i>
+  		</button>
+        </div>
+        <div class="right input-field col s6">
+         <button class="btn waves-effect waves-light"  name="reset">Reset
+          	<i class="material-icons right">replay</i>
+          </button>
+        </div>
+      </div>
+   	</div>
+    </form>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- <div class="center" ng-controller="SuccessController">
+      <div id="grid1" ui-grid="{ data: myData }" class="grid"></div>
+</div> -->
+
+<div class="row" style="height:100%;width:100%">
+<div class="col s12 m12  l12" style="height:100%;width:100%">    
+<!-- <div class="card meetings cf" ng-show="viewprov" > -->
+<div ng-show="viewprov" style="height:100%;width:100%">
+  <table class="table centered bordered highlight responsive-table">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+  <col width="130">
+        <thead class="red lighten-4 black-text">
+          <tr>	
+          	  <th>Provider Id</th>	
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Middle Name</th>
+              <th>Credenntial Number</th>
+              <th>Credential Type</th>
+               <th>Birth Year</th>
+              <th>CE Due date</th>
+              <th>Expiration date</th>
+              <th>First Issue date</th>
+              <th>Last Issue date</th>
+              
+             
+          </tr>
+        </thead>
+
+        <tbody class="teal white black-text">
+         <tr data-dir-paginate="event in resultProvdata|orderBy:sortKey:reverse|filter:search|itemsPerPage: 5" >
+         <!-- <tr ng-repeat="event in resultProvdata" class="teal lighten-5"> -->
+      		<td>{{event.prov_id}}</td>
+      		<td>{{event.FirstName}}</td>
+      		<td>{{event.LastName}}</td>
+      		<td>{{event.MiddleName}}</td>
+      		<td>{{event.CredentialNumber}}</td>
+      		<td>{{event.CredentialType}}</td>
+      		<td>{{event.year}}</td>
+      		<td>{{event.CEDueDate}}</td>
+      		<td>{{event.ExpirationDate}}</td>
+      		<td>{{event.firstIss_dt}}</td>
+      		<td>{{event.lastIss_dt}}</td>
+   		 </tr>
+        </tbody>
+      </table>
+      <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true" >
+	</dir-pagination-controls>
+</div>
+</div>
+</div>
+<!-- <footer class="page-footer">
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Copyright. All Rights Reserved
+            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            </div>
+          </div>
+</footer> -->

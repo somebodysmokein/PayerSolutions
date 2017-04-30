@@ -1,0 +1,88 @@
+{
+    "items": [
+        {
+            "CredentialNumber": "VM60171312",
+            "LastName": "Corcel",
+            "FirstName":"Megan",
+            "MiddleName":"Jean",
+            "CredentialType":"Veterinary Medication Clerk Registration",
+            "Status":"EXPIRED",
+            "year":"1985",
+            "CEDueDate":"",
+            "firstIss_dt":"20141023",
+            "lastIss_dt":"20150407",
+            "ExpirationDate":"20160430",
+            "ActionTaken":"No"
+        },
+        {
+            "CredentialNumber": "RN60554847",
+            "LastName": "Paquin",
+            "FirstName":"Stephen",
+            "MiddleName":"Thomas",
+            "CredentialType":"Registered Nurse License",
+            "Status":"EXPIRED",
+            "year":"1991",
+            "CEDueDate":"20180430",
+            "firstIss_dt":"20150427",
+            "lastIss_dt":"20150427",
+            "ExpirationDate":"20160430",
+            "ActionTaken":"No"
+        },
+        {
+            "CredentialNumber": "NC60255859",
+            "LastName": "Lakotiy",
+            "FirstName":"Andriy",
+            "MiddleName":"Lyubomirovich",
+            "CredentialType":"Nursing Assistant Certification",
+            "Status":"ACTIVE",
+            "year":"1984",
+            "CEDueDate":"",
+            "firstIss_dt":"20111130",
+            "lastIss_dt":"20160430",
+            "ExpirationDate":"20170517",
+            "ActionTaken":"No"
+        },
+        {
+            "CredentialNumber": "RN60284217",
+            "LastName": "Park",
+            "FirstName":"Do Yun",
+            "MiddleName":"",
+            "CredentialType":"Registered Nurse License",
+            "Status":"ACTIVE",
+            "year":"1990",
+            "CEDueDate":"20190331",
+            "firstIss_dt":"20120710",
+            "lastIss_dt":"20170205",
+            "ExpirationDate":"20180331",
+            "ActionTaken":"No"
+        },
+        {
+            "CredentialNumber": "PH00039907",
+            "LastName": "Ward",
+            "FirstName":"David",
+            "MiddleName":"O",
+            "CredentialType":"Pharmacist License",
+            "Status":"ACTIVE",
+            "year":"1968",
+            "CEDueDate":"20170512",
+            "firstIss_dt":"20010620",
+            "lastIss_dt":"20160430",
+            "ExpirationDate":"20170512",
+            "ActionTaken":"No"
+        },
+        {
+            "CredentialNumber": "RN00152386",
+            "LastName": "Edwards",
+            "FirstName":"Ruth",
+            "MiddleName":"Jessie",
+            "CredentialType":"Registered Nurse License",
+            "Status":"ACTIVE",
+            "year":"1968",
+            "CEDueDate":"20170512",
+            "firstIss_dt":"20010620",
+            "lastIss_dt":"20160430",
+            "ExpirationDate":"20170512",
+            "ActionTaken":"No"
+        }
+    ]
+}

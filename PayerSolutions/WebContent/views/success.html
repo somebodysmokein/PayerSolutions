@@ -1,5 +1,5 @@
 <div class="row">
-     <div class="col offset-s2 s2 offset-m2 m2 offset-l2 l2">
+     <div class="col offset-s1 s3 offset-m1 m3 offset-l1 l3">
       <div class="card yellow lighten-4 hoverable" ng-click="initaddProvider()">
         <div class="card-image">
           <a ng-click="addProvider()" href="#/addprovider"><img src="images/AddProvider-2.png"></a>
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-     <div class="col offset-s4 s2 offset-m2 m2 offset-l2 l2">
+     <div class="col offset-s1 s3 offset-m1 m3 offset-l1 l3">
       <div class="card yellow lighten-4 hoverable" ng-click="initviewProvider()">
         <div class="card-image">
           <a ng-click="viewProvider()" href="#/viewprovider"><img src="images/ViewProvider-1.png"></a>
@@ -23,12 +23,158 @@
         </div>
       </div>
     </div>
-  </div>
-  
+    
 
+  <div class="col offset-s1 s3 offset-m1 m3 offset-l1 l3">
+      <div class="card yellow lighten-4 hoverable" ng-click="initupdateProvider()">
+        <div class="card-image">
+          <a ng-click="updateProvider()" href="#/updateprovider"><img src="images/update.png"></a>
+          <span class="card-title"></span>
+          <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a> -->
+        </div>
+        <div class="card-content" ng-click="updateProvider()">
+          <p><h6>Update Provider</h6></p>
+        </div>
+      </div>
+    </div>
+  </div>
         
- 
+
 <!-- <div class="card meetings cf" ng-show="addprov"> -->
+<div class="row" style="width:100%;height:100%" ng-show="updateprov">
+	<div class="col offset-s2 s3 offset-m2 m3 offset-l2 l3" style="width:40%;height:20%">
+		
+		<input type="search" placeholder="search" ng-model="srchkey.keyword"></li>
+        
+	</div>
+	<div class="col s2  m2  l2" style="width:20%;height:20%">
+		<button type="button" class="btn waves-effect waves-light"  ng-click="searchProvider()">Search</button>
+	</div>
+</div>
+
+<div class="row" style="width:100%;height:100%">
+<div class="col offset-s2 s12 offset-m2 m10 offset-l2 l10" style="width:100%;height:100%">    
+<div class="card center form-wrapper" ng-show="updateprov" style="width:100%;height:100%">
+  <div class="textintro" style="width:100%;height:100%">
+    <h4>Update Provider Form</h4>
+    <center><p>{{ message }}</p></center>
+    <div class="row" style="width:100%;height:100%">
+ 
+    <form class="col s12 m8 l8" style="width:100%;height:100%">
+      <div class="row" style="width:100%;height:100%">
+        <div class="input-field col s6">
+          <!-- <input id="fname" name="fname" type="text" class="validate" ng-model="update.fname"> -->
+          <label>First Name:</label>
+          <h5 ng-model="update.fname">{{searchProvdata.FirstName}}</h5>
+          <!-- <label for="fname">First Name</label> -->
+        </div>
+        <div class="right input-field col s6">
+          <!-- <input id="last_name" type="text" class="validate" ng-model="params.last_name">
+          <label for="last_name">Last Name</label> -->
+           <label>Last Name:</label>
+          <h6 ng-model="update.lname">{{searchProvdata.LastName}}</h6>
+        </div>
+      </div>
+       <div class="row">
+       <div class="input-field col s6">
+      	<!-- <input id="mi" type="text" class="validate" ng-model="params.mi">
+         <label for="mi">Middle Initial</label> -->
+          <label>Provider ID:</label>
+          <h6 ng-model="update.provid">{{searchProvdata.prov_id}}</h6>
+      </div>
+      <div class="input-field col s2">
+      	<label>Action Taken</label>
+      </div>
+ 	<div class="input-field col  s6">	 
+      <input name="actknupdt" type="radio" id="actknupdt1" ng-model="update.actkn" value="Yes"/>
+      <label for="actknupdt1">Yes</label>
+      <input name="actknupdt" type="radio" id="actknupdt2" ng-model="update.actkn" value="No"/>
+      <label for="actknupdt2">No</label>
+	</div>
+	<!--  <div>currently selected: {{params.actkn}}</div> -->
+      </div>
+      
+      <div class="row">
+ 	<div class="input-field col pull-s1 s6">	 
+      <input name="statusupdt" type="radio" id="statusupdt1" ng-model="update.status" value="Active"/>
+      <label for="statusupdt1">Active</label>
+      <input name="statusupdt" type="radio" id="statusupdt2" ng-model="update.status" value="Expired"/>
+      <label for="statusupt2">Expired</label>
+	</div>
+	<!-- <div>currently selected: {{params.status}}</div> -->
+	 <div class="input-field col s6">
+      	<input id="year" type="text" class="validate" ng-model="update.year">
+         <label for="year">Birth Year</label>
+      </div>
+      	 <div class="row">
+ 		<div class="input-field col s6">
+ 			<label>Credential Number:</label>
+          <h6 ng-model="update.CredentialNumber"> &nbsp;&nbsp;{{searchProvdata.CredentialNumber}}</h6>
+ 		</div>
+ 		<div class="input-field col s6">	
+ 			<input id="credtyupdt" type="text" class="validate" ng-model="update.credty">
+         	<label for="credtyupdt">Credential Type</label>
+ 		</div>
+ 		</div>    
+ 		
+ 		 <div class="row">
+ 		 <div class="input-field col s2">
+ 			<label> CE Due Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="cedtupdt" type="date" class="datepicker" ng-model="update.cedt">
+			         	
+ 		</div>
+ 		
+ 		
+ 		<div class="input-field col s2">
+ 			<label>Expiration Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="expdtupdt" type="date" class="datepicker" ng-model="update.expdt">
+ 		</div>
+ 		</div>    
+ 		<div class="row">
+ 		 <div class="input-field col s2">
+ 			<label> First Issue Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="firstdtupdt" type="date" class="datepicker" ng-model="update.firstdt">
+			         	
+ 		</div>
+ 		
+ 		<div class="input-field col s2">
+ 			<label>Last Issue  Date</label> 
+ 		</div>	
+ 		<div class="input-field col s4">
+ 			 <input id="lstdtupdt" type="date" class="datepicker" ng-model="update.lstdt">
+ 		</div>
+ 		</div>    
+ 		 
+ 		 
+ 		 <div class="row">
+        <div class="input-field col s6">
+          <button ng-click="updateProvider()" class="btn waves-effect waves-light"  name="submit">Submit
+    		<i class="material-icons right">send</i>
+  		</button>
+        </div>
+        <div class="right input-field col s6">
+         <button class="btn waves-effect waves-light"  name="reset">Reset
+          	<i class="material-icons right">replay</i>
+          </button>
+        </div>
+      </div>
+   	</div>
+    </form>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
 <div class="row" style="width:100%;height:100%">
 <div class="col offset-s2 s12 offset-m2 m10 offset-l2 l10" style="width:100%;height:100%">    
 <div class="card center form-wrapper" ng-show="addprov" style="width:100%;height:100%">
@@ -142,6 +288,10 @@
 </div>
 </div>
 </div>
+
+
+
+
 
 <!-- <div class="center" ng-controller="SuccessController">
       <div id="grid1" ui-grid="{ data: myData }" class="grid"></div>

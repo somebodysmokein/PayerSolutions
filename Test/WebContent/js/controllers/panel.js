@@ -1,12 +1,17 @@
 myApp.controller('PanelController',  function($scope,$http) {
   $scope.message = "Please fill all fields of the Provider Form!!!";
   
-  $scope.getProvUrl="/Test/getProv";
-	
+ $scope.getProvUrl="/Test/getProv";
+$scope.loadProv=false;
+$scope.showProv=true;
+$scope.executing=false;
+$scope.dates={};
   //var $scope.resultProvdata;
   
   $scope.loadPanel=function()
   {
+	  $scope.loadProv=false;
+	  $scope.showProv=true;
 	  var provjcarousel =  $('.jcarousel').jcarousel();
 	  //alert("Load Panel Called");
 	  $http.get($scope.getProvUrl).success(function(response)
@@ -119,6 +124,45 @@ myApp.controller('PanelController',  function($scope,$http) {
 			  });
 	  
   };
+  
+  $scope.showBatch=function()
+  {
+	  //alert("Show Batch Called");
+	  $scope.loadProv=true;
+	  $scope.showProv=false;
+	  $http.get("/Test/getDate").success(function(response)
+			  {
+		  		
+		  		$scope.dates=response;
+		  		 	
+		  		  
+		  		//alert($scope.dates.cycdt);
+			  });
+  };
+  
+  $scope.showProvider=function()
+  {
+	  //alert("Show Prov Called");
+	  $scope.loadProv=false;
+	  $scope.showProv=true;
+  };
+  
+  $scope.copyData=function()
+  {
+	  $scope.executing=true;
+	  
+	  $http.get("/Test/loadProv").success(function(response)
+			  {
+		  		
+		  		$scope.message=response.message;
+		  		$scope.executing=false;
+		  		Materialize.toast($scope.message, 4000);
+		  		//alert($scope.dates.cycdt);
+			  });
+	  
+  };
+  
+ 
   
   //$scope.loadPanel();
 });

@@ -14,4 +14,24 @@
     <servlet-name>ViewProvider</servlet-name>
     <url-pattern>/getProv</url-pattern>
   </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>PullProviderUpdates</display-name>
+    <servlet-name>PullProviderUpdates</servlet-name>
+    <servlet-class>com.TCS.PullProviderUpdates</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PullProviderUpdates</servlet-name>
+    <url-pattern>/loadProv</url-pattern>
+  </servlet-mapping> 
+    <servlet>
+    <description></description>
+    <display-name>getDates</display-name>
+    <servlet-name>getDates</servlet-name>
+    <servlet-class>com.TCS.getCycleDates</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>getDates</servlet-name>
+    <url-pattern>/getDate</url-pattern>
+  </servlet-mapping> 
 </web-app>

@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 import com.DBConnectionFactory.DBConnectionFactory;
 
-public class AddProvider extends HttpServlet {
+public class updateProvider extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
@@ -63,47 +63,31 @@ public class AddProvider extends HttpServlet {
 		try{	
 						
 						Connection conn =  conn1.getConnection();
-						/*Random rnd = new Random();
-						 rnd.setSeed(50);
-						 int randomNo;
-						 ResultSet rs;
-						 //System.out.println("Random Number:"+randomNo);
-						 
-						 String verify_rndQuery="select 1 from provider_persn_Details where exists "+
-								 "(select * from provider_persn_Details where prov_id=?)";
-						 java.sql.PreparedStatement checkrnd_pStmt = conn.prepareStatement(verify_rndQuery);
-						 do
-						 {
-							  randomNo=rnd.nextInt(Integer.MAX_VALUE );
-							  System.out.println(randomNo);
-							  checkrnd_pStmt.setInt(1,randomNo);
-							  rs=checkrnd_pStmt.executeQuery(verify_rndQuery);
-							  rs.last();		 
-						 }while(rs.getRow()<1);*/
 						 
 						
-						String persn_query = "insert into PROVIDER_PERSN_DETAILS(CredentialNumber,LastName,FirstName,MiddleName,BIRTH_YEAR) values(?,?,?,?,?)";
+						/*String persn_query = "insert into PROVIDER_PERSN_DETAILS(PROV_ID,CredentialNumber,LastName,FirstName,MiddleName,BIRTH_YEAR) values(?,?,?,?,?,?)";
 						String cred_info_query="insert into CREDENTIAL_INFO(CredentialNumber,CredentialType) values(?,?)";
-						String d_date_query="insert into D_DATE (CE_DUE_DT,FIRST_ISS_DT,LAST_ISS_DT, EXP_DT,ACTION_TAKEN,CredentialNumber) values (?,?,?,?,?,?)";
-						String timestmp_query="insert into procs_tracking values (current_timestamp,current_timestamp)";
+						String d_date_query="insert into D_DATE (CE_DUE_DT,FIRST_ISS_DT,LAST_ISS_DT, EXP_DT,ACTION_TAKEN,CredentialNumber) values (?,?,?,?,?,?)";*/
 						
+						 String persn_query = "update PROVIDER_PERSN_DETAILS set BIRTH_YEAR=?,last_timestamp=CURRENT_TIMESTAMP where CredentialNumber=?";
+						 String cred_info_query="update CREDENTIAL_INFO set CredentialType=?,last_timestamp=CURRENT_TIMESTAMP where CredentialNumber=?";
+							String d_date_query="update D_DATE set CE_DUE_DT=?,FIRST_ISS_DT=?,LAST_ISS_DT=?, EXP_DT=?,ACTION_TAKEN=?,last_timestamp=CURRENT_TIMESTAMP where CredentialNumber=?";
+							String timestmp_query="insert into procs_tracking values (current_timestamp,current_timestamp)";
+							
 						java.sql.Date createDate = conn1.getcurrentDate();
 						java.sql.PreparedStatement persn_pStmt = conn.prepareStatement(persn_query);
 						java.sql.PreparedStatement cred_info_query_pStmt = conn.prepareStatement(cred_info_query);
 						java.sql.PreparedStatement d_date_pStmt = conn.prepareStatement(d_date_query);
 						java.sql.PreparedStatement timestmp_pStmt = conn.prepareStatement(timestmp_query);
 						
-						//persn_pStmt.setInt (1,randomNo);
-						persn_pStmt.setString (1,CredentialNumber);
-						persn_pStmt.setString (2, LastName);
-						persn_pStmt.setString (3, FirstName);
-						persn_pStmt.setString (4, MiddleName);
-						persn_pStmt.setString(5,year);
+						persn_pStmt.setString(1,year);
+						persn_pStmt.setString (2,CredentialNumber);
 						persn_pStmt.executeUpdate();
 						
 						
-						cred_info_query_pStmt.setString (1,CredentialNumber);
-						cred_info_query_pStmt.setString(2,CredentialType);
+						cred_info_query_pStmt.setString(1,CredentialType);
+						cred_info_query_pStmt.setString (2,CredentialNumber);
+						
 						cred_info_query_pStmt.executeUpdate();
 						
 						
@@ -116,7 +100,6 @@ public class AddProvider extends HttpServlet {
 						d_date_pStmt.executeUpdate();
 						
 						timestmp_pStmt.executeUpdate();
-						
 						message="Update Successful";
 			}
 			

@@ -26,4 +26,26 @@
     <servlet-name>ViewProvider</servlet-name>
     <url-pattern>/getProv</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>searchProvider</display-name>
+    <servlet-name>searchProvider</servlet-name>
+    <servlet-class>com.TCS.searchProvider</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>searchProvider</servlet-name>
+    <url-pattern>/searchProv</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <description></description>
+    <display-name>updateProvider</display-name>
+    <servlet-name>updateProvider</servlet-name>
+    <servlet-class>com.TCS.updateProvider</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>updateProvider</servlet-name>
+    <url-pattern>/updateProv</url-pattern>
+  </servlet-mapping>
 </web-app>
+

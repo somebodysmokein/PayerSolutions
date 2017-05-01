@@ -32,10 +32,14 @@
     <img alt="" src="images/Logo-edited-small-1.jpg" ></a>
     <ul class="hide-on-med-and-down">
         <li><a><h5> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Consumer System</h5></a></li>
+       
+          	
     </ul>
       <ul class="right">
         	<li><input type="search" placeholder="search" ng-model="srchkey.keyword"></li>
         	<li><button type="button" class="btn waves-effect waves-light"  ng-click="search()">Search</button></li>
+             <li ng-show="showProv"><a ng-click="showBatch()" href="">Load Providers<i class="material-icons right">settings</i></a></li>
+             <li ng-show="loadProv"><a ng-click="showProvider()" href="">Show Providers<i class="material-icons right">supervisor_account</i></a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
       <!-- <form>
@@ -47,11 +51,11 @@
       </form> -->
     </div>
   </nav>
-    <h4 class="header center orange-text">Provider Details</h4>
-
+    <h4 ng-show="showProv" class="header center orange-text">Provider Details</h4>
+	<h4 ng-show="loadProv" class="header center orange-text">Batch Details</h4>
 	 
 
-    <div class="section">
+    <div class="section" ng-show="showProv">
 			<div class="wrapper">
     
             <div class="jcarousel-wrapper">
@@ -76,6 +80,58 @@
             </div>
         </div>
     </div>
+
+<div class="section" ng-show="loadProv">
+<div class="wrapper">
+<div class="row" style="height:100%;width:100%">
+<div class="col s6 m6  l6" style="height:50%;width:50%">    
+
+<div style="height:100%;width:100%">
+  <table class="table centered bordered highlight responsive-table">
+  <col width="130">
+        <thead class="teal lighten-2 black-text">
+          <tr>	
+          	  <th>Previous 5 Runs</th>	
+          </tr>
+        </thead>
+
+      <tbody class="grey lighten-1 black-text">
+      <!-- <tr data-dir-paginate="event in dates|orderBy:sortKey:reverse|filter:search|itemsPerPage: 5" > -->
+        <tr ng-repeat="event in dates" class="teal lighten-5">
+      		<td>{{event.cycdt}}</td>
+      </tr>
+        </tbody>
+      </table>
+      <!-- <dir-pagination-controls
+                max-size="5"
+                direction-links="true"
+                boundary-links="true" >
+	</dir-pagination-controls>	                    
+           -->
+            </div>
+</div>
+<div class="col s6 m6  l6" style="height:45%;width:50%">
+     <div class="card" style="height:5%;width:30%">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="images/BAT-edited.png">
+    </div>
+    <div class="card-content">
+      <span class="card-title activator grey-text text-darken-4">Load Providers<i class="material-icons right">more_vert</i></span>
+      <p><a ng-click="copyData()" href="#">Execute Batch</a></p>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Load Providers<i class="material-icons right">close</i></span>
+      <p>This is the batch process for copying providers recently loaded in the Provider file into the Consumer system. Click on Execute Batch button!!!</p>
+    </div>
+  </div>
+ <div  ng-show="executing" class="progress">
+      <div class="indeterminate"></div>
+  </div>
+  <!--  ng-show="executing"-->
+</div>
+</div>
+</div>
+</div>
 
   <footer class="page-footer orange">
     <div class="container">
@@ -114,6 +170,7 @@
   <script src="js/lib/angular/angular-animate.min.js"></script>
   <script src="js/app.js"></script>
   <script type="text/javascript" src="js/controllers/panel.js"></script>
+    <script type="text/javascript" src="js/lib/dirPagination.js"></script>
   
 	<script type="text/javascript">
 	 $(document).ready(function(){

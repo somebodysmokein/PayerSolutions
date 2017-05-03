@@ -1,0 +1,17 @@
+Provider Query
+
+            select count(R5.prov_id) from (select R3.prov_id,R3.CredentialNumber,R3.CredentialType,R3.Lastname,R3.Firstname,R3.MiddleName,R3.birth_year,
+            R3.STATUS,R4.CE_DUE_DT,R4.FIRST_ISS_DT,R4.LAST_ISS_DT,R4.EXP_DT ,R4.ACTION_TAKEN from (select R1.prov_id,R1.CredentialNumber,R2.CredentialType,R1.Lastname,R1.Firstname,R1.MiddleName,R1.birth_year,
+            R2.STATUS from PROVIDER_PERSN_DETAILS R1
+            join CREDENTIAL_INFO R2 on R1.CredentialNumber=R2.CredentialNumber) R3 join D_DATE R4 on R3.CredentialNumber=R4.CredentialNumber) R5
+
+Consumer Query
+
+             select count(*) from (select R3.prov_id,R3.CredentialNumber,R3.CredentialType,R3.Lastname,R3.Firstname,R3.MiddleName,R3.birth_year,
+            R3.STATUS,R4.CE_DUE_DT,R4.FIRST_ISS_DT,R4.LAST_ISS_DT,R4.EXP_DT ,R4.ACTION_TAKEN from (select R1.prov_id,R1.CredentialNumber,R2.CredentialType,R1.Lastname,R1.Firstname,R1.MiddleName,R1.birth_year,
+            R2.STATUS from consumer_provider_persn_details R1
+            join consumer_prov_credential_info R2 on R1.CredentialNumber=R2.CredentialNumber and R1.LAST_TIMESTAMP=(select max(LAST_TIMESTAMP) from CONSUMER_PROVIDER_PERSN_DETAILS 
+
+            where CredentialNumber=R1.CredentialNumber)
+             and R2.LAST_TIMESTAMP=(select max(LAST_TIMESTAMP) from CONSUMER_PROV_CREDENTIAL_INFO where CredentialNumber=R2.CredentialNumber)) R3 join consumer_d_date R4 on R3.CredentialNumber=R4.CredentialNumber
+             and R4.LAST_TIMESTAMP=(select max(LAST_TIMESTAMP) from CONSUMER_D_DATE where CredentialNumber=R3.CredentialNumber)) R5 ;          

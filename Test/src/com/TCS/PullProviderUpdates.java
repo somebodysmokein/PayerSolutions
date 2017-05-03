@@ -65,8 +65,6 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 							//System.out.println("FirstName:"+result_obj.get("fname")+"projectName:"+projectName);
 						}
 						
-						rs.close();
-						conn.close();
 						
 						insertConsumerData consumer_data=new insertConsumerData();
 						consumer_data.setConsumerDATA(result_array);
@@ -76,6 +74,14 @@ public void doGet(HttpServletRequest request, HttpServletResponse response) thro
 		
 						pw.write(providerData.toString());
 						pw.flush();
+						
+						String timestmp_query="insert into procs_tracking values (current_timestamp,current_timestamp)";
+						java.sql.PreparedStatement timestmp_pStmt = conn.prepareStatement(timestmp_query);
+						timestmp_pStmt.executeUpdate();
+						
+						rs.close();
+						conn.close();
+						
 			}
 			
 					catch (SQLException esql)

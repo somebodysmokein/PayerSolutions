@@ -15,6 +15,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.DBConnectionFactory.DBConnectionFactory;
+import com.DBConnectionFactory.ProvDBConnectionFactory;
 
 public class ViewProvider extends HttpServlet{
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,7 +28,7 @@ public class ViewProvider extends HttpServlet{
 		System.out.println("View Provider Caled");
 		PrintWriter pw=response.getWriter();
 		response.setContentType("text/json");
-		DBConnectionFactory conn1 = DBConnectionFactory.getInstance();
+		ProvDBConnectionFactory conn1 = ProvDBConnectionFactory.getInstance();
 		try{	
 			String projectName="";
 						Connection conn =  conn1.getConnection();
@@ -35,10 +36,12 @@ public class ViewProvider extends HttpServlet{
 								" and R2.Emp_key=R1.Emp_key;";
 						*/
 						
-						String query=" select R1.prov_id,R1.CredentialNumber,R2.CredentialType,R1.Lastname,R1.Firstname,R1.MiddleName,R1.birth_year,"+
+						String query="select distinct R1.prov_id,R1.CredentialNumber,R2.CredentialType,R1.Lastname,R1.Firstname,R1.MiddleName,R1.birth_year,"+
             "R2.STATUS,R3.CE_DUE_DT,R3.FIRST_ISS_DT,R3.LAST_ISS_DT,R3.EXP_DT ,R3.ACTION_TAKEN "+
-            "from PROVIDER_PERSN_DETAILS R1,CREDENTIAL_INFO R2,D_DATE R3 where R1.CredentialNumber=R2.CredentialNumber"+
-            " and R1.CredentialNumber=R3.CredentialNumber";
+            "from CONSUMER_PROVIDER_PERSN_DETAILS R1,CONSUMER_PROV_CREDENTIAL_INFO R2,CONSUMER_D_DATE R3 where R1.CredentialNumber=R2.CredentialNumber "+
+             "and R1.CredentialNumber=R3.CredentialNumber and R1.LAST_TIMESTAMP=(select max(LAST_TIMESTAMP) from CONSUMER_PROVIDER_PERSN_DETAILS where credentialnumber=R1.CredentialNumber)"+
+             " and R2.LAST_TIMESTAMP=(select max(LAST_TIMESTAMP) from CONSUMER_PROV_CREDENTIAL_INFO where credentialnumber=R2.CredentialNumber) and R3.LAST_TIMESTAMP=(select max(LAST_TIMESTAMP)"+
+             " from CONSUMER_D_DATE where credentialnumber=R3.CredentialNumber)";
 						java.sql.PreparedStatement empStmt=conn.prepareStatement(query);
 						ResultSet rs=empStmt.executeQuery();
 						

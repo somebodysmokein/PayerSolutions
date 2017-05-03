@@ -85,13 +85,13 @@ public class AddProvider extends HttpServlet {
 						String persn_query = "insert into PROVIDER_PERSN_DETAILS(CredentialNumber,LastName,FirstName,MiddleName,BIRTH_YEAR) values(?,?,?,?,?)";
 						String cred_info_query="insert into CREDENTIAL_INFO(CredentialNumber,CredentialType) values(?,?)";
 						String d_date_query="insert into D_DATE (CE_DUE_DT,FIRST_ISS_DT,LAST_ISS_DT, EXP_DT,ACTION_TAKEN,CredentialNumber) values (?,?,?,?,?,?)";
-						String timestmp_query="insert into procs_tracking values (current_timestamp,current_timestamp)";
+						//String timestmp_query="insert into procs_tracking values (current_timestamp,current_timestamp)";
 						
 						java.sql.Date createDate = conn1.getcurrentDate();
 						java.sql.PreparedStatement persn_pStmt = conn.prepareStatement(persn_query);
 						java.sql.PreparedStatement cred_info_query_pStmt = conn.prepareStatement(cred_info_query);
 						java.sql.PreparedStatement d_date_pStmt = conn.prepareStatement(d_date_query);
-						java.sql.PreparedStatement timestmp_pStmt = conn.prepareStatement(timestmp_query);
+						//java.sql.PreparedStatement timestmp_pStmt = conn.prepareStatement(timestmp_query);
 						
 						//persn_pStmt.setInt (1,randomNo);
 						persn_pStmt.setString (1,CredentialNumber);
@@ -115,7 +115,7 @@ public class AddProvider extends HttpServlet {
 						d_date_pStmt.setString (6,CredentialNumber);
 						d_date_pStmt.executeUpdate();
 						
-						timestmp_pStmt.executeUpdate();
+						//timestmp_pStmt.executeUpdate();
 						
 						message="Update Successful";
 			}

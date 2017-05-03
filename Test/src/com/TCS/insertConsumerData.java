@@ -40,14 +40,14 @@ public class insertConsumerData {
 			 java.sql.PreparedStatement checkrnd_pStmt = conn.prepareStatement(verify_rndQuery);
 		
 			
-			String persn_query = "insert into consumer_provider_persn_details(CredentialNumber,LastName,FirstName,MiddleName,BIRTH_YEAR) values ";
+			String persn_query = "insert into consumer_provider_persn_details(PROV_ID,CredentialNumber,LastName,FirstName,MiddleName,BIRTH_YEAR) values ";
 			String cred_info_query="insert into consumer_prov_credential_info(CredentialNumber,CredentialType) values ";
 			String d_date_query="insert into consumer_d_date (CE_DUE_DT,FIRST_ISS_DT,LAST_ISS_DT, EXP_DT,ACTION_TAKEN,CredentialNumber) values ";
 			
 			
 			for(int i=0;i<consumer_array.length();i++)
 			{
-				persn_query=persn_query+"(?,?,?,?,?),";
+				persn_query=persn_query+"(?,?,?,?,?,?),";
 				cred_info_query=cred_info_query+"(?,?),";
 				d_date_query=d_date_query+"(?,?,?,?,?,?),";
 			}
@@ -70,7 +70,7 @@ public class insertConsumerData {
 				JSONObject consumer_obj=new JSONObject();
 				consumer_obj=consumer_array.getJSONObject(i);
 				System.out.println(ctr);
-			//persn_pStmt.setInt (++ctr,Integer.parseInt(consumer_obj.get("prov_id").toString()));
+			persn_pStmt.setInt (++ctr,Integer.parseInt(consumer_obj.get("prov_id").toString()));
 			persn_pStmt.setString (++ctr,consumer_obj.get("CredentialNumber").toString());
 			persn_pStmt.setString (++ctr, consumer_obj.get("LastName").toString());
 			persn_pStmt.setString (++ctr, consumer_obj.get("FirstName").toString());

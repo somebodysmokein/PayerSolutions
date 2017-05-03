@@ -72,13 +72,13 @@ public class updateProvider extends HttpServlet {
 						 String persn_query = "update PROVIDER_PERSN_DETAILS set BIRTH_YEAR=?,last_timestamp=CURRENT_TIMESTAMP where CredentialNumber=?";
 						 String cred_info_query="update CREDENTIAL_INFO set CredentialType=?,last_timestamp=CURRENT_TIMESTAMP where CredentialNumber=?";
 							String d_date_query="update D_DATE set CE_DUE_DT=?,FIRST_ISS_DT=?,LAST_ISS_DT=?, EXP_DT=?,ACTION_TAKEN=?,last_timestamp=CURRENT_TIMESTAMP where CredentialNumber=?";
-							String timestmp_query="insert into procs_tracking values (current_timestamp,current_timestamp)";
+							//String timestmp_query="insert into procs_tracking values (current_timestamp,current_timestamp)";
 							
 						java.sql.Date createDate = conn1.getcurrentDate();
 						java.sql.PreparedStatement persn_pStmt = conn.prepareStatement(persn_query);
 						java.sql.PreparedStatement cred_info_query_pStmt = conn.prepareStatement(cred_info_query);
 						java.sql.PreparedStatement d_date_pStmt = conn.prepareStatement(d_date_query);
-						java.sql.PreparedStatement timestmp_pStmt = conn.prepareStatement(timestmp_query);
+						//java.sql.PreparedStatement timestmp_pStmt = conn.prepareStatement(timestmp_query);
 						
 						persn_pStmt.setString(1,year);
 						persn_pStmt.setString (2,CredentialNumber);
@@ -99,7 +99,7 @@ public class updateProvider extends HttpServlet {
 						d_date_pStmt.setString (6,CredentialNumber);
 						d_date_pStmt.executeUpdate();
 						
-						timestmp_pStmt.executeUpdate();
+						//timestmp_pStmt.executeUpdate();
 						message="Update Successful";
 			}
 			
